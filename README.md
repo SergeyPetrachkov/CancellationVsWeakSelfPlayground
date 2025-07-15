@@ -113,32 +113,6 @@ WeakSelfPlayground/
 - **Xcode 16.3+**
 - Uses modern Swift concurrency (`async/await`, `Task`, `AsyncSequence`)
 
-## 🔄 **Swift 6 Compliance**
-
-This project demonstrates Swift 6 concurrency best practices:
-
-### Sendable Conformance
-- **`ViewState`**: `Sendable` struct for safe cross-isolation transfer
-- **`LongService`**: `Sendable` with no mutable state
-- **Interactor classes**: `@unchecked Sendable` with MainActor coordination
-
-### Actor Isolation
-- **`Interactor` protocol**: `@MainActor` for UI-related operations
-- **`Presenter`**: `@MainActor` for UI state management
-- **`ViewController`**: Inherits MainActor isolation
-
-### Data Race Safety
-- All async operations use proper capture lists
-- Clear isolation boundaries between UI and background work
-- Demonstrates common Swift 6 migration patterns
-
-### Migration Guide Alignment
-This code follows patterns from [Swift Migration Guide](https://www.swift.org/migration/documentation/migrationguide/):
-- Progressive concurrency adoption
-- Proper global actor usage
-- Sendable protocol implementation
-- Actor isolation best practices
-
 ## 🚀 Getting Started
 
 1. **Clone the repository**
