@@ -84,7 +84,7 @@
 import UIKit
 import SwiftUI
 
-final class InfiniteSequenceInteractor: Interactor, @unchecked Sendable {
+final class InfiniteSequenceInteractor: Interactor {
 	let presenter: Presenter
 	let longService = LongService()
 
@@ -114,7 +114,7 @@ final class InfiniteSequenceInteractor: Interactor, @unchecked Sendable {
 	}
 }
 
-final class WeakSequenceInteractor: Interactor, @unchecked Sendable {
+final class WeakSequenceInteractor: Interactor {
 	let presenter: Presenter
 	let longService = LongService()
 
@@ -144,7 +144,7 @@ final class WeakSequenceInteractor: Interactor, @unchecked Sendable {
 	}
 }
 
-final class CancelSequenceInteractor: Interactor, @unchecked Sendable {
+final class CancelSequenceInteractor: Interactor {
 	let presenter: Presenter
 	let longService = LongService()
 
@@ -177,7 +177,7 @@ final class CancelSequenceInteractor: Interactor, @unchecked Sendable {
 	}
 }
 
-final class GuardLetSequenceInteractor: Interactor, @unchecked Sendable {
+final class GuardLetSequenceInteractor: Interactor {
 	let presenter: Presenter
 	let longService = LongService()
 
