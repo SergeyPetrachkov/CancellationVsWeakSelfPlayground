@@ -98,6 +98,7 @@ final class InfiniteSequenceInteractor: Interactor, @unchecked Sendable {
 
 	func viewDidLoad() {
 		print("Started at: \(Date.now)")
+		presenter.present(state: ViewState(headline: "\(self)"))
 		Task {
 			for await notification in NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification).values {
 				print("Received notification \(notification)")
@@ -127,6 +128,7 @@ final class WeakSequenceInteractor: Interactor, @unchecked Sendable {
 
 	func viewDidLoad() {
 		print("Started at: \(Date.now)")
+		presenter.present(state: ViewState(headline: "\(self)"))
 		Task { [weak self] in
 			for await notification in NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification).values {
 				print("Received notification \(notification)")
@@ -158,6 +160,7 @@ final class CancelSequenceInteractor: Interactor, @unchecked Sendable {
 
 	func viewDidLoad() {
 		print("Started at: \(Date.now)")
+		presenter.present(state: ViewState(headline: "\(self)"))
 		task = Task {
 			for await notification in NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification).values {
 				print("Received notification \(notification)")
@@ -188,6 +191,7 @@ final class GuardLetSequenceInteractor: Interactor, @unchecked Sendable {
 
 	func viewDidLoad() {
 		print("Started at: \(Date.now)")
+		presenter.present(state: ViewState(headline: "\(self)"))
 		Task { [weak self] in
 			guard let self else { return }
 			for await notification in NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification).values {

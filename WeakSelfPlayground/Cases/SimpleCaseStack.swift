@@ -82,10 +82,11 @@ final class NoWeakInteractor: Interactor {
 
 	func viewDidLoad() {
 		print("Started at: \(Date.now)")
+		presenter.present(state: ViewState(headline: "\(self)", text: "Updating..."))
 		Task {
 			try await longService.doSomething()
 			try await longService.doSomethingElse()
-			let state = ViewState(text: "Updated")
+			let state = ViewState(headline: "\(self)", text: "Updated")
 			presenter.present(state: state)
 		}
 	}
@@ -109,10 +110,11 @@ final class WeakInteractor: Interactor {
 
 	func viewDidLoad() {
 		print("Started at: \(Date.now)")
+		presenter.present(state: ViewState(headline: "\(self)", text: "Updating..."))
 		Task { [weak self] in
 			try await self?.longService.doSomething()
 			try await self?.longService.doSomethingElse()
-			let state = ViewState(text: "Updated")
+			let state = ViewState(headline: "\(String(describing: self))", text: "Updated")
 			self?.presenter.present(state: state)
 		}
 	}
@@ -138,10 +140,11 @@ final class CancellationInteractor: Interactor {
 
 	func viewDidLoad() {
 		print("Started at: \(Date.now)")
+		presenter.present(state: ViewState(headline: "\(self)", text: "Updating..."))
 		task = Task {
 			try await longService.doSomething()
 			try await longService.doSomethingElse()
-			let state = ViewState(text: "Updated")
+			let state = ViewState(headline: "\(self)", text: "Updated")
 			presenter.present(state: state)
 		}
 	}
@@ -166,11 +169,12 @@ final class GuardLetInteractor: Interactor {
 
 	func viewDidLoad() {
 		print("Started at: \(Date.now)")
+		presenter.present(state: ViewState(headline: "\(self)", text: "Updating..."))
 		Task { [weak self] in
 			guard let self else { return }
 			try await longService.doSomething()
 			try await longService.doSomethingElse()
-			let state = ViewState(text: "Updated")
+			let state = ViewState(headline: "\(self)", text: "Updated")
 			presenter.present(state: state)
 		}
 	}

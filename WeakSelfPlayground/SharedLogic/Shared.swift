@@ -24,8 +24,14 @@ final class LongService: Sendable {
 	}
 }
 
-struct ViewState: Sendable {
+struct ViewState {
+	let headline: String
 	let text: String
+
+	init(headline: String = "", text: String = "Updating...") {
+		self.headline = headline
+		self.text = text
+	}
 }
 
 @MainActor
@@ -47,7 +53,24 @@ final class ViewController: UIViewController {
 	let interactor: any Interactor
 
 	let progressIndicator = UIActivityIndicatorView(style: .large)
-	let label = UILabel(frame: .zero)
+	let headline: UILabel = {
+		let label = UILabel(frame: .zero)
+		label.font = UIFont.preferredFont(forTextStyle: .headline)
+		label.textAlignment = .left
+		label.numberOfLines = 0
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+
+	let body: UILabel = {
+		let label = UILabel(frame: .zero)
+		label.font = UIFont.preferredFont(forTextStyle: .body)
+		label.text = "Updating..."
+		label.textAlignment = .center
+		label.numberOfLines = 0
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
 
 	init(interactor: some Interactor) {
 		self.interactor = interactor
@@ -64,24 +87,27 @@ final class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		label.numberOfLines = 0
-		label.text = "Updating..."
-		label.textAlignment = .center
+
+		view.addSubview(headline)
+		view.addSubview(body)
 		view.addSubview(progressIndicator)
-		view.addSubview(label)
+
 		progressIndicator.translatesAutoresizingMaskIntoConstraints = false
 		progressIndicator.tintColor = .darkText
 		progressIndicator.startAnimating()
-		label.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate(
 			[
+				headline.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+				headline.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+				headline.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+
 				progressIndicator.widthAnchor.constraint(equalToConstant: 50),
 				progressIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 				progressIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
-				label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-				label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-				label.topAnchor.constraint(equalTo: progressIndicator.bottomAnchor, constant: 16),
+				body.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+				body.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+				body.topAnchor.constraint(equalTo: progressIndicator.bottomAnchor, constant: 16),
 			]
 		)
 		interactor.viewDidLoad()
@@ -95,6 +121,7 @@ final class ViewController: UIViewController {
 	}
 
 	func update(state: ViewState) {
-		label.text = state.text
+		headline.text = state.headline
+		body.text = state.text
 	}
 }
