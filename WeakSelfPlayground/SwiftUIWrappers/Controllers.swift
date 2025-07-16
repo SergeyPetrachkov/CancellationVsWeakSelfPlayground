@@ -149,3 +149,20 @@ struct GuardLetSequenceController: UIViewControllerRepresentable {
 
 	}
 }
+
+struct DeinitCancelSequenceController: UIViewControllerRepresentable {
+
+	typealias UIViewControllerType = ViewController
+
+	func makeUIViewController(context: Context) -> UIViewControllerType {
+		let presenter = Presenter()
+		let interactor = DeinitCancelSequenceInteractor(presenter: presenter)
+		let vc = ViewController(interactor: interactor)
+		presenter.controller = vc
+		return vc
+	}
+
+	func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+
+	}
+}

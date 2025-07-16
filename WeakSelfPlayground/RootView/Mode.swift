@@ -18,10 +18,12 @@ enum Mode: Identifiable {
 	case infiniteSequence
 	/// weak self to avoid leaks
 	case weakSequence
-	/// cancellation handling to avoid leaks
+	/// cancellation handling to "avoid" leaks, but the task is forever in memory
 	case cancelSequence
 	/// danger of guard-let that can lead to leaks
 	case guardLetSequence
+	/// cancel task with sequence in deinit
+	case deinitCancelSequence
 
 	var body: String {
 		switch self {
@@ -33,7 +35,7 @@ enum Mode: Identifiable {
 			"Cancellation"
 		case .guardLet, .guardLetSequence:
 			"Guard let"
-		case .deinitCancellation:
+		case .deinitCancellation, .deinitCancelSequence:
 			"Cancel task in deinit"
 		}
 	}
@@ -48,7 +50,7 @@ enum Mode: Identifiable {
 			"Task is stored in a property and cancelled manually"
 		case .guardLet, .guardLetSequence:
 			"[weak self] + guard let self in Task"
-		case .deinitCancellation:
+		case .deinitCancellation, .deinitCancelSequence:
 			"[weak self] + cancellation in deinit"
 		}
 	}

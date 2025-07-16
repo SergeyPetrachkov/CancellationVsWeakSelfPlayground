@@ -4,7 +4,7 @@
 Educational iOS SwiftUI app demonstrating memory management patterns in async Swift code. The app showcases different approaches to handling weak references, task cancellation, and memory leaks in asynchronous operations.
 
 ## Architecture Pattern
-The app uses a **Presenter-Interactor-Controller (PIC)** architecture where:
+The app uses a **View(Controller) - Interactor - Presenter (VIP)** architecture where:
 - `Interactor` classes handle business logic and async operations
 - `Presenter` manages state updates and UI communication
 - `ViewController` (UIKit) handles UI display
@@ -19,18 +19,21 @@ The app uses a **Presenter-Interactor-Controller (PIC)** architecture where:
 - `ViewController`: Generic UIKit controller with activity indicator and label
 
 ### Memory Management Patterns
-The app demonstrates 7 different approaches to async memory management:
+The app demonstrates 10 different approaches to async memory management:
 
 **Single Task Patterns** (`Cases/SimpleCaseStack.swift`):
+- `NoWeakInteractor`: No capture list (demonstrates memory retention)
 - `WeakInteractor`: Uses `[weak self]` capture
 - `CancellationInteractor`: Stores and cancels `Task` in `viewDidUnload()`
 - `GuardLetInteractor`: Uses `guard let self` pattern (dangerous for long operations)
+- `DeinitCancellationInteractor`: Cancels task in `deinit` (flexible cleanup timing)
 
 **AsyncSequence Patterns** (`Cases/AsyncSequenceStack.swift`):
 - `InfiniteSequenceInteractor`: No memory management (demonstrates leak)
 - `WeakSequenceInteractor`: Uses `[weak self]` in async sequence
 - `CancelSequenceInteractor`: Cancels stored task
 - `GuardLetSequenceInteractor`: Uses `guard let self` (demonstrates partial leak)
+- `DeinitCancelSequenceInteractor`: Combines weak self with deinit cancellation
 
 ### SwiftUI Integration (`SwiftUIWrappers/WeakController.swift`)
 Each interactor has a corresponding `UIViewControllerRepresentable` wrapper that:
@@ -58,10 +61,10 @@ Run the app and observe console output for deinit messages when dismissing views
 ### Project Structure
 ```
 WeakSelfPlayground/
-├── Cases/                     # Memory management pattern implementations
+├── Cases/                    # Memory management pattern implementations
 ├── SharedLogic/              # Core architecture components
 ├── SwiftUIWrappers/          # UIKit-SwiftUI bridge components
-└── ContentView.swift         # Main SwiftUI navigation
+└── RooView/                  # Main screen implementation
 ```
 
 ## Build & Run

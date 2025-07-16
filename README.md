@@ -37,7 +37,7 @@ The app uses a **View - Interactor - Presenter (VIP)** pattern to build screens 
 
 ## 🔬 Memory Management Patterns
 
-The app demonstrates 9 different approaches to async memory management:
+The app demonstrates 10 different approaches to async memory management:
 
 ### Single Task Patterns (`Cases/SimpleCaseStack.swift`)
 
@@ -57,6 +57,7 @@ The app demonstrates 9 different approaches to async memory management:
 | **WeakSequenceInteractor** | `[weak self]` capture | Immediate deallocation, sequence continues | ⚠️ Well, better than nothing :D |
 | **CancelSequenceInteractor** | Task storage + cancellation | Immediate cleanup + sequence termination | ✅ **Recommended** |
 | **GuardLetSequenceInteractor** | `[weak self] + guard let self` | Memory leak until app termination | ❌ Catastrophic pattern |
+| **DeinitCancelSequenceInteractor** | `[weak self]` + deinit cancellation | Immediate deallocation + sequence cleanup | ✅ Flexible cleanup timing |
 
 ## 🧪 Testing Instructions
 

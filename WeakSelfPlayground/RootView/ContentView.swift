@@ -17,7 +17,7 @@ struct ContentView: View {
 			Tab("AsyncSequence", systemImage: "person.3.sequence") {
 				ShowcasesList(
 					sectionTitle: "Async Sequence within a Task",
-					modes: [Mode.infiniteSequence, .weakSequence, .cancelSequence, .guardLetSequence],
+					modes: [Mode.infiniteSequence, .weakSequence, .cancelSequence, .guardLetSequence, .deinitCancelSequence],
 					shownMode: $shownMode
 				)
 			}
@@ -42,6 +42,8 @@ struct ContentView: View {
 				GuardLetSequenceController()
 			case .deinitCancellation:
 				DeinitCancellationController()
+			case .deinitCancelSequence:
+				DeinitCancelSequenceController()
 			}
 		}
 		.navigationTitle("Swift Concurrency")
