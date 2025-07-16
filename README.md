@@ -37,7 +37,9 @@ The app uses a **View - Interactor - Presenter (VIP)** pattern to build screens 
 
 ## 🔬 Memory Management Patterns
 
-### Single Task Patterns (`SimpleCaseStack.swift`)
+The app demonstrates 9 different approaches to async memory management:
+
+### Single Task Patterns (`Cases/SimpleCaseStack.swift`)
 
 | Pattern | Description | Memory Behavior | Use Case |
 |---------|-------------|----------------|----------|
@@ -45,8 +47,9 @@ The app uses a **View - Interactor - Presenter (VIP)** pattern to build screens 
 | **WeakInteractor** | `[weak self]` capture | Immediate deallocation, task continues | ✅ Fire-and-forget operations |
 | **CancellationInteractor** | Task storage + cancellation | Immediate cleanup + task termination | ✅ User-initiated operations |
 | **GuardLetInteractor** | `[weak self] + guard let self` | Extended lifetime until task completes | ⚠️ Educational anti-pattern |
+| **DeinitCancellationInteractor** | Cancels task in `deinit` | Cleanup when object is deallocated | ✅ Alternative cleanup timing |
 
-### Async Sequence Patterns (`AsyncSequenceStack.swift`)
+### Async Sequence Patterns (`Cases/AsyncSequenceStack.swift`)
 
 | Pattern | Description | Memory Behavior | Use Case |
 |---------|-------------|----------------|----------|
@@ -96,7 +99,7 @@ WeakSelfPlayground/
 ├── WeakSelfPlayground/
 │   ├── Cases/
 │   │   ├── SimpleCaseStack.swift      # Single task patterns
-│   │   └── AsyncSequenceStack.swift   # Infinite sequence patterns
+│   │   └── AsyncSequenceStack.swift   # Infinite async sequences
 │   ├── SharedLogic/
 │   │   └── Shared.swift               # Core architecture components
 │   ├── SwiftUIWrappers/
@@ -150,3 +153,10 @@ This is an educational project. Feel free to:
 - Improve documentation
 - Suggest additional test scenarios
 - Report issues or unclear explanations
+
+## 📝 Memory Management Best Practices
+- Store and cancel tasks in `viewDidUnload()` or `deinit` when appropriate
+- Choose cancellation timing based on cleanup requirements:
+  - `viewDidUnload()` for view-lifecycle bound operations
+  - `deinit` for more flexible cleanup timing
+- Avoid `guard let self` for operations that outlive the view controller

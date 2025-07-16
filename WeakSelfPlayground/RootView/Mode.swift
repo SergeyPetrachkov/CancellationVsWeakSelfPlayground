@@ -11,6 +11,8 @@ enum Mode: Identifiable {
 	case cancellation
 	/// retaining self via guard let in the single unstructured task
 	case guardLet
+	/// cancel task in deinit
+	case deinitCancellation
 
 	/// leak caused by infinite uncancelled sequence
 	case infiniteSequence
@@ -31,6 +33,8 @@ enum Mode: Identifiable {
 			"Cancellation"
 		case .guardLet, .guardLetSequence:
 			"Guard let"
+		case .deinitCancellation:
+			"Cancel task in deinit"
 		}
 	}
 
@@ -44,6 +48,8 @@ enum Mode: Identifiable {
 			"Task is stored in a property and cancelled manually"
 		case .guardLet, .guardLetSequence:
 			"[weak self] + guard let self in Task"
+		case .deinitCancellation:
+			"[weak self] + cancellation in deinit"
 		}
 	}
 }

@@ -65,6 +65,22 @@ struct GuardLetController: UIViewControllerRepresentable {
 	}
 }
 
+struct DeinitCancellationController: UIViewControllerRepresentable {
+	typealias UIViewControllerType = ViewController
+
+	func makeUIViewController(context: Context) -> UIViewControllerType {
+		let presenter = Presenter()
+		let interactor = DeinitCancellationInteractor(presenter: presenter)
+		let vc = ViewController(interactor: interactor)
+		presenter.controller = vc
+		return vc
+	}
+
+	func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+
+	}
+}
+
 struct InfiniteSequenceController: UIViewControllerRepresentable {
 
 	typealias UIViewControllerType = ViewController

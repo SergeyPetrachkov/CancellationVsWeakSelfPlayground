@@ -40,7 +40,7 @@ final class Presenter {
 	weak var controller: ViewController?
 
 	deinit {
-		print("\(self) deinit")
+		print("\(self) deinit at \(Date.now)")
 	}
 
 	func present(state: ViewState) {

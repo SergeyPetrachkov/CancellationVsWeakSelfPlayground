@@ -9,7 +9,7 @@ struct ContentView: View {
 			Tab("SingleTask", systemImage: "person") {
 				ShowcasesList(
 					sectionTitle: "Single Unstructured Task",
-					modes: [Mode.noWeakSelf, .weakSelf, .cancellation, .guardLet],
+					modes: [Mode.noWeakSelf, .weakSelf, .cancellation, .guardLet, .deinitCancellation],
 					shownMode: $shownMode
 				)
 			}
@@ -40,6 +40,8 @@ struct ContentView: View {
 				CancelSequenceController()
 			case .guardLetSequence:
 				GuardLetSequenceController()
+			case .deinitCancellation:
+				DeinitCancellationController()
 			}
 		}
 		.navigationTitle("Swift Concurrency")
