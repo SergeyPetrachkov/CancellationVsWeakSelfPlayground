@@ -1,4 +1,4 @@
-# WeakSelfPlayground
+# ConcurrencyPlayground
 
 > **Educational iOS SwiftUI app demonstrating memory management patterns in async Swift code**
 

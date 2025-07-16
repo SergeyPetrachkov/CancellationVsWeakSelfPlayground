@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		19C6485B2E266E7E00EF8337 /* WeakSelfPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeakSelfPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19C6485B2E266E7E00EF8337 /* ConcurrencyPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConcurrencyPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		19C6485D2E266E7E00EF8337 /* WeakSelfPlayground */ = {
+		19C6485D2E266E7E00EF8337 /* ConcurrencyPlayground */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WeakSelfPlayground;
+			path = ConcurrencyPlayground;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		19C648522E266E7E00EF8337 = {
 			isa = PBXGroup;
 			children = (
-				19C6485D2E266E7E00EF8337 /* WeakSelfPlayground */,
+				19C6485D2E266E7E00EF8337 /* ConcurrencyPlayground */,
 				19C6485C2E266E7E00EF8337 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +40,7 @@
 		19C6485C2E266E7E00EF8337 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				19C6485B2E266E7E00EF8337 /* WeakSelfPlayground.app */,
+				19C6485B2E266E7E00EF8337 /* ConcurrencyPlayground.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		19C6485A2E266E7E00EF8337 /* WeakSelfPlayground */ = {
+		19C6485A2E266E7E00EF8337 /* ConcurrencyPlayground */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 19C648662E266E8700EF8337 /* Build configuration list for PBXNativeTarget "WeakSelfPlayground" */;
+			buildConfigurationList = 19C648662E266E8700EF8337 /* Build configuration list for PBXNativeTarget "ConcurrencyPlayground" */;
 			buildPhases = (
 				19C648572E266E7E00EF8337 /* Sources */,
 				19C648582E266E7E00EF8337 /* Frameworks */,
@@ -61,13 +61,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				19C6485D2E266E7E00EF8337 /* WeakSelfPlayground */,
+				19C6485D2E266E7E00EF8337 /* ConcurrencyPlayground */,
 			);
-			name = WeakSelfPlayground;
+			name = ConcurrencyPlayground;
 			packageProductDependencies = (
 			);
 			productName = WeakSelfPlayground;
-			productReference = 19C6485B2E266E7E00EF8337 /* WeakSelfPlayground.app */;
+			productReference = 19C6485B2E266E7E00EF8337 /* ConcurrencyPlayground.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 19C648562E266E7E00EF8337 /* Build configuration list for PBXProject "WeakSelfPlayground" */;
+			buildConfigurationList = 19C648562E266E7E00EF8337 /* Build configuration list for PBXProject "ConcurrencyPlayground" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				19C6485A2E266E7E00EF8337 /* WeakSelfPlayground */,
+				19C6485A2E266E7E00EF8337 /* ConcurrencyPlayground */,
 			);
 		};
 /* End PBXProject section */
@@ -305,7 +305,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		19C648562E266E7E00EF8337 /* Build configuration list for PBXProject "WeakSelfPlayground" */ = {
+		19C648562E266E7E00EF8337 /* Build configuration list for PBXProject "ConcurrencyPlayground" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				19C648642E266E8700EF8337 /* Debug */,
@@ -314,7 +314,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		19C648662E266E8700EF8337 /* Build configuration list for PBXNativeTarget "WeakSelfPlayground" */ = {
+		19C648662E266E8700EF8337 /* Build configuration list for PBXNativeTarget "ConcurrencyPlayground" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				19C648672E266E8700EF8337 /* Debug */,
