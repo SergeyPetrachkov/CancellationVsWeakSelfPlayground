@@ -93,23 +93,6 @@ The app demonstrates 10 different approaches to async memory management:
 - Not canceling infinite async sequences
 - Assuming weak self always prevents memory issues
 
-## 📂 Project Structure
-
-```
-WeakSelfPlayground/
-├── WeakSelfPlayground/
-│   ├── Cases/
-│   │   ├── SimpleCaseStack.swift      # Single task patterns
-│   │   └── AsyncSequenceStack.swift   # Infinite async sequences
-│   ├── SharedLogic/
-│   │   └── Shared.swift               # Core architecture components
-│   ├── SwiftUIWrappers/
-│   │   └── WeakController.swift       # UIKit-SwiftUI bridge
-│   ├── ContentView.swift              # Main navigation
-│   └── WeakSelfPlaygroundApp.swift    # App entry point
-└── README.md
-```
-
 ## 🛠️ Technical Requirements
 
 - **iOS 18.4+**
@@ -121,13 +104,13 @@ WeakSelfPlayground/
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd WeakSelfPlayground
+   git clone https://github.com/SergeyPetrachkov/CancellationVsWeakSelfPlayground
+   cd ConcurrencyPlayground
    ```
 
 2. **Open in Xcode**
    ```bash
-   open WeakSelfPlayground.xcodeproj
+   open ConcurrencyPlayground.xcodeproj
    ```
 
 3. **Run the app**
